@@ -1,6 +1,6 @@
 import os
 import re
-from list_files import list_files
+from .list_files import list_files
 
 
 def extract_versions_from_content(content, regex):

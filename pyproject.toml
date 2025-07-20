@@ -1,7 +1,14 @@
 [project]
 name = "siv3d-proj-ver-checker"
 version = "0.1.0"
-description = ""
+description = "A tool to find and list Siv3D versions used in Visual Studio C++ projects."
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
+authors = [
+    { name = "voidProc", email = "voidproc@gmail.com" }
+]
 dependencies = []
+
+[project.scripts]
+siv3d-checker = "siv3d_proj_ver_checker.main:main"
