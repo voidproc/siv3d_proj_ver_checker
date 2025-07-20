@@ -3,8 +3,8 @@ import itertools
 import os
 import re
 from collections import Counter
+import sys
 
-ROOT_DIR = 'D:/Documents/src'
 TARGET_EXTENSIONS = ['.vcxproj']
 SEARCH_PATTERN = r'\$\(\s*SIV3D_([0-9]+_[0-9]+_[0-9]+)\s*\)'
 
@@ -50,8 +50,27 @@ def version_key(ver_str):
     return tuple(int(x) for x in ver_str.split('_'))
 
 
+def get_folder_path_from_args():
+    if len(sys.argv) < 2:
+        print("使い方: python your_script.py <フォルダパス>")
+        print("例: python your_script.py /path/to/your/folder")
+        return None
+
+    folder_path = sys.argv[1]
+
+    if not os.path.exists(folder_path):
+        print(f"エラー: 指定されたパス '{folder_path}' は存在しません。")
+        return None
+    if not os.path.isdir(folder_path):
+        print(f"エラー: 指定されたパス '{folder_path}' はフォルダではありません。")
+        return None
+
+    return folder_path
+
+
 if __name__ == '__main__':
-    vers = extract_versions_from_files(ROOT_DIR, TARGET_EXTENSIONS, SEARCH_PATTERN)
+    root_dir = get_folder_path_from_args()
+    vers = extract_versions_from_files(root_dir, TARGET_EXTENSIONS, SEARCH_PATTERN)
 
     for item in vers:
         print(f'{item["relative_path"]}: {", ".join(item["versions"])}')
