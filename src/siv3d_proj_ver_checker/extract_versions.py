@@ -20,6 +20,7 @@ def extract_versions_from_file(file_path, regex):
 
 
 def extract_versions_from_files(root_dir, extensions, search_pattern):
+    """指定されたディレクトリ以下のすべてのファイルからバージョンを抽出する"""
     result = []
     regex = re.compile(search_pattern)
 
