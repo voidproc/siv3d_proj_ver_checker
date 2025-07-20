@@ -1,4 +1,5 @@
 ﻿import io
+import itertools
 import os
 import re
 from collections import Counter
@@ -52,11 +53,12 @@ def version_key(ver_str):
 if __name__ == '__main__':
     vers = extract_versions_from_files(ROOT_DIR, TARGET_EXTENSIONS, SEARCH_PATTERN)
 
-    version_counter = Counter()
     for item in vers:
-        for ver in item['versions']:
-            version_counter[ver] += 1
         print(f'{item["relative_path"]}: {", ".join(item["versions"])}')
+
+    version_sets = map(lambda item: item["versions"], vers)
+    all_versions = itertools.chain.from_iterable(version_sets)
+    version_counter = Counter(all_versions)
 
     for version in sorted(version_counter.keys(), key=version_key):
         print(f'{version}: {version_counter[version]}')
