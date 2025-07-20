@@ -13,22 +13,25 @@
 
 ## インストール
 
-このリポジトリをクローンします。
+以下のコマンドで、リポジトリのクローンとインストールができます。
+
+```
+pip install git+https://github.com/voidproc/siv3d_proj_ver_checker.git
+```
+
+あるいは、以下のようにリポジトリをクローンした後にインストールをしてください。
 
 ```
 git clone https://github.com/voidproc/siv3d_proj_ver_checker.git
 cd siv3d_proj_ver_checker
-```
-
-次に、以下のコマンドでインストールします。`siv3d-checker` コマンドが使えるようになります。
-
-```
 pip install .
 ```
 
+インストール後、`siv3d-checker` コマンドが使えるようになります。
+
 ## 使い方
 
-インストール後、ターミナルで以下のコマンドを実行します。
+ターミナルで以下のコマンドを実行します。
 
 ```
 siv3d-checker <検索したいディレクトリのパス>
