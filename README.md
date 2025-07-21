@@ -49,6 +49,6 @@ path\to\project3\project3.vcxproj: 0_6_5
 
 ## 動作環境
 
-- Python 3.12 で動作確認
+- Python 3.12.11 (Windows ) で動作確認
 - 外部ライブラリへの依存はありません。
 - 開発環境では [uv](https://github.com/astral-sh/uv) を使用しています。
